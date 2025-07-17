@@ -1,0 +1,74 @@
+<head>
+
+  <style>
+    #result {
+      color: red;
+      font-size: 16px;
+      border: 1px solid darkgreen;
+      padding: 10px 10px 20px 10px;
+      background-color: aquamarine;
+    }
+
+    #but {
+      background-color: lightblue;
+      color: darkblue;
+      font-size: 16px;
+      padding: 40px 20px;
+      margin: 10px 20px 20px 20px;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <input id="inputname" type="text" placeholder="이름을 입력하세요"><br>
+  <input id="age" type="text" placeholder="나이을 입력하세요"><br>
+  <input id="hb" type="text" placeholder="취미을 입력하세요"><br>
+  <button id="but" onclick="showName()">정보 출력하기</button>
+  <button id="but" onclick="message()">응 원 받 기</button>
+
+
+  <p id="result"></p>
+
+  <script>
+    function showName() {
+      let name = document.getElementById('inputname').value;
+      let age = document.getElementById('age').value;
+      let hb = document.getElementById('hb').value;
+      let date = new Date();
+      let timestring = date.toLocaleString();
+
+      if (name === "" || age === "" || hb === "") {
+        document.getElementById('result').textContent = "모든 정보를 입력해주세요!"
+      }
+      else {
+        document.getElementById('result').textContent = `안녕하세요 ${name}님! 당신은 ${age}살이고, 취미는 ${hb}입니다. 현재 시간은 ${timestring} 입니다.`;
+        document.getElementById('inputname').value = "";
+        document.getElementById('age').value = "";
+        document.getElementById('hb').value = "";
+      }
+    }
+
+    function message() {
+      let message = ["응원합니다! 당신은 할 수 있습니다!",
+      "계속해서 노력하세요! 당신의 꿈은 이루어질 것입니다!",
+        "당신은 특별한 존재입니다! 자신을 믿으세요!",
+        "매일 조금씩 성장하고 있습니다! 포기하지 마세요!",
+        "당신의 노력은 결실을 맺을 것입니다! 계속해서 나아가세요!",
+        "당신은 이미 충분히 잘하고 있습니다! 자신을 칭찬하세요!",
+        "당신의 열정은 빛납니다! 계속해서 그 길을 걸어가세요!",
+        "당신은 소중한 존재입니다! 세상에 긍정적인 영향을 주세요!",
+        "당신의 꿈은 현실이 될 수 있습니다! 계속해서 도전하세요!",]
+
+      let randomIndex = Math.floor(Math.random() * message.length);
+      message = message[randomIndex];
+
+      document.getElementById('result').textContent = message;
+
+    }
+
+  </script>
+
+</body>
